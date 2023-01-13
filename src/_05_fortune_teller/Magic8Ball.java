@@ -7,6 +7,8 @@ package _05_fortune_teller;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Magic8Ball {
 
 	// 1. Make a main method that includes all the steps below….
@@ -32,5 +34,33 @@ public class Magic8Ball {
 	// 8. If the random number is 3
 
 	// -- write your own answer
-
+	public static void main(String[] args) {
+		int rand;
+		rand = new Random().nextInt(4);
+		System.out.println(rand);
+		
+		JOptionPane.showInputDialog("Ask A Question");
+		
+		String answer;
+		if (rand == 0)
+		{
+			answer = "Yes";
+			JOptionPane.showMessageDialog(null, answer);
+		}
+		if (rand == 1)
+		{
+			answer = "No";
+			JOptionPane.showMessageDialog(null, answer);
+		}
+		if (rand == 2)
+		{
+			answer = "Maybe you should ask Google?";
+			JOptionPane.showMessageDialog(null, answer);
+		}
+		if (rand == 3)
+		{
+			answer = "It's unlikely";
+			JOptionPane.showMessageDialog(null, answer);
+		}
+	}
 }
