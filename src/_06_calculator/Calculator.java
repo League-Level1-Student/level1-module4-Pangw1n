@@ -5,6 +5,8 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Calculator {
+public class Calculator implements ActionListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JPanel inputs = new JPanel();
@@ -56,6 +58,11 @@ public class Calculator {
 		sub.setPreferredSize(buttonSize);
 		multi.setPreferredSize(buttonSize);
 		div.setPreferredSize(buttonSize);
+		
+		add.addActionListener(this);
+		sub.addActionListener(this);
+		multi.addActionListener(this);
+		div.addActionListener(this);
 		
 		add.setText("Add");
 		sub.setText("Sub");
@@ -100,5 +107,31 @@ public class Calculator {
 		int output;
 		output = num1 / num2;
 		return output;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		JButton pressedButton = (JButton) e.getSource();
+		
+		int num1 = Integer.parseInt(input1.getText());
+		int num2 = Integer.parseInt(input2.getText());
+		
+		if(pressedButton == add)
+		{
+			output.setText(add(num1, num2) + "");
+		}
+		if(pressedButton == sub)
+		{
+			output.setText(sub(num1, num2) + "");
+		}
+		if(pressedButton == multi)
+		{
+			output.setText(multi(num1, num2) + "");
+		}
+		if(pressedButton == div)
+		{
+			output.setText(div(num1, num2) + "");
+		}
 	}
 }
