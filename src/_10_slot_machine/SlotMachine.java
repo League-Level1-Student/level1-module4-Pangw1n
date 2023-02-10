@@ -66,10 +66,6 @@ public class SlotMachine implements ActionListener {
 		frame.pack();
 	}
 	
-	public void Spin()
-	{
-	}
-	
 	private JLabel createLabelImage(String fileName) throws MalformedURLException{
         URL imageURL = getClass().getResource(fileName);
 	if (imageURL == null){
@@ -81,7 +77,7 @@ public class SlotMachine implements ActionListener {
 	return imageLabel;
 	}
 	
-	private String valToImage(int val)
+	private String valToImageURL(int val)
 	{
 		if (val == 0)
 		{
@@ -100,33 +96,25 @@ public class SlotMachine implements ActionListener {
 			return cherry;
 		}
 	}
+	
+	private Icon GetIcon(String URL)
+	{
+		URL imageURL = getClass().getResource(URL);
+		Icon icon = new ImageIcon(imageURL);
+		return icon;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
-		column1val = new Random().nextInt(2);
-		column2val = new Random().nextInt(2);
-		column3val = new Random().nextInt(2);
+		column1val = new Random().nextInt(3);
+		column2val = new Random().nextInt(3);
+		column3val = new Random().nextInt(3);
 		
-		try {
-			column1 = createLabelImage(cherry);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			column2 = createLabelImage(cherry);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			column3 = createLabelImage(cherry);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		column1.setIcon(GetIcon(valToImageURL(column1val)));
+		column2.setIcon(GetIcon(valToImageURL(column2val)));
+		column3.setIcon(GetIcon(valToImageURL(column3val)));
 		
 		if (column1val == column2val && column2val == column3val)
 		{
